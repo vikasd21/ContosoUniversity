@@ -36,10 +36,12 @@
       }
     },
     "_artifactsLocation": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "https://stagebbb945ad98b64767bde.blob.core.windows.net/contosouniversity-stageartifacts"
     },
     "_artifactsLocationSasToken": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": ""
     },
     "ContosoUniversityPackageFolder": {
       "type": "string",
