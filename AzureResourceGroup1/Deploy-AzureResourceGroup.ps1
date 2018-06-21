@@ -83,9 +83,12 @@ if ($UploadArtifacts) {
     }
 
     # Generate a 4 hour SAS token for the artifacts location if one was not provided in the parameters file
+
+    $artifactsStorageContainer = Get-AzureStorageContainer -Context $StorageAccountContext
+
     if ($OptionalParameters[$ArtifactsLocationSasTokenName] -eq $null) {
         $OptionalParameters[$ArtifactsLocationSasTokenName] = ConvertTo-SecureString -AsPlainText -Force `
-            (New-AzureStorageContainerSASToken -Container $StorageContainerName -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
+            (New-AzureStorageContainerSASToken -Container $artifactsStorageContainer.Name -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
     }
 }
 
